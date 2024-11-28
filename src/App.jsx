@@ -1,5 +1,4 @@
 import "./assets/scss/style.scss";
-import "./index.css";
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
         </div>
         <div className="art-list">
           <ul className="flex gap-4">
-            <li className="rounded-lg">
+            <li className="w-1/5 rounded-lg border- border-gray-300 p-4">
               <div className="art-img">
                 <img src="" alt="" />
               </div>
@@ -36,6 +35,37 @@ function App() {
                     <p></p>
                   </li>
                   <li>
+                    <h2>별점</h2>
+                    <ul className="rate">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className="w-1/5 rounded-lg border- border-gray-300 p-4">
+              <div className="art-img">
+                <img src="" alt="" />
+              </div>
+              <div className="art-info">
+                <ul className="flex flex-wrap">
+                  <li className="w-1/2">
+                    <h2>분류</h2>
+                    <p>공연</p>
+                  </li>
+                  <li className="w-1/2">
+                    <h2>제목</h2>
+                    <p>리지</p>
+                  </li>
+                  <li className="w-1/2">
+                    <h2>날짜</h2>
+                    <p>2024.11.01</p>
+                  </li>
+                  <li className="w-1/2">
                     <h2>별점</h2>
                     <ul className="rate">
                       <li></li>

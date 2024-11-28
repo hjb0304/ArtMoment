@@ -4,8 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {},
+        primary: "#A32020",
+        border: "#ccc",
       },
+      screens: {},
+    },
+    fontFamily: {
+      pretendard: ["Pretendard", "sans-serif"],
     },
   },
   plugins: [],
