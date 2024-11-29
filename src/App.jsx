@@ -3,20 +3,20 @@ import "./assets/scss/style.scss";
 function App() {
   return (
     <>
-      <header className="header w-full">
-        <h1>ArtMoments</h1>
-      </header>
-      <div className="contents">
-        <div className="search w-full flex align-middle">
+      <header className="header w-full h-20 flex justify-between items-center font-bold px-24 border-b-2 border-secondary">
+        <h1 className="text-primary">ArtMoments</h1>
+        <div className="search w-full flex align-middle h-">
           <input type="text" />
           <button></button>
         </div>
+      </header>
+      <div className="content px-24 py-6 flex flex-col gap-6">
         <div className="btn-wrap flex justify-items-end">
           <button className="btn">기록하기</button>
         </div>
         <div className="art-list">
           <ul className="flex gap-4">
-            <li className="w-1/5 rounded-lg border- border-gray-300 p-4">
+            <li className="w-1/5 rounded-lg border p-4">
               <div className="art-img">
                 <img src="" alt="" />
               </div>
@@ -47,7 +47,7 @@ function App() {
                 </ul>
               </div>
             </li>
-            <li className="w-1/5 rounded-lg border- border-gray-300 p-4">
+            <li className="w-1/5 rounded-lg border p-4">
               <div className="art-img">
                 <img src="" alt="" />
               </div>
@@ -81,7 +81,7 @@ function App() {
           </ul>
         </div>
       </div>
-      <footer className="footer"></footer>
+      <footer className="footer h-20 px-24 border-t-1 border-secondary border-dashed"></footer>
     </>
   );
 }

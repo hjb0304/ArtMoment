@@ -5,7 +5,11 @@ export default {
     extend: {
       colors: {
         primary: "#A32020",
+        secondary: "#0C0A09",
         border: "#ccc",
+      },
+      borderWidth: {
+        1: "1px",
       },
       screens: {},
     },

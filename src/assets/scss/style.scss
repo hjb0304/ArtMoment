@@ -2,29 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("../scss/font.scss");
+
 @layer components {
   * {
     @apply font-pretendard;
   }
   .btn {
-    @apply bg-primary text-white rounded text-sm;
+    @apply bg-secondary text-white rounded text-sm h-9 px-4;
+  }
+  .border {
+    @apply border-solid border-1 border-secondary;
   }
 }
 
-@font-face {
-  font-family: "Pretendard";
-  src: url("../font/Pretendard-Bold.woff") format("woff");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Pretendard";
-  src: url("../font/Pretendard-SemiBold.woff.woff") format("woff");
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Pretendard";
-  src: url("../font/Pretendard-Medium.woff") format("woff");
-  font-weight: 500;
+.header h1 {
+  font-size: 32px;
 }
