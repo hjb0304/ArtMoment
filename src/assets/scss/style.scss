@@ -7,12 +7,28 @@
 @layer components {
   * {
     @apply font-pretendard;
+    border-color: #0c0a09;
   }
   .btn {
     @apply bg-secondary text-white rounded text-sm h-9 px-4;
+    &.btn-icon {
+      @apply p-0;
+    }
   }
-  .border {
-    @apply border-solid border-1 border-secondary;
+  .search {
+    .input {
+      @apply border border-2 rounded rounded-tr-none rounded-br-none h-full;
+    }
+    .btn {
+      @apply rounded-tl-none rounded-bl-none h-full;
+    }
+  }
+  .input {
+    @apply pl-2;
+  }
+  .art-img {
+    @apply border-b-2 border-dashed;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='2' stroke-dasharray='8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
   }
 }
 
