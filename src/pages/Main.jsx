@@ -1,13 +1,11 @@
 import React from "react";
 import img from "../assets/img/img.jpg";
-import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import StarHalfRoundedIcon from "@mui/icons-material/StarHalfRounded";
-import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
-import SvgIcon from "@mui/material/SvgIcon";
+import Rate from "../components/Rate";
 
 function Main() {
   return (
-    <div className="content px-24 py-6 flex flex-col gap-6">
+    <>
+      {" "}
       <div className="btn-wrap flex justify-items-end">
         <button className="btn">기록하기</button>
       </div>
@@ -41,30 +39,14 @@ function Main() {
                   <h2 className="text-primary font-semibold text-xs mb-1">
                     별점
                   </h2>
-                  <ul className="flex">
-                    <li>
-                      <SvgIcon component={StarRoundedIcon} />
-                    </li>
-                    <li>
-                      <SvgIcon component={StarBorderRoundedIcon} />
-                    </li>
-                    <li>
-                      <SvgIcon component={StarBorderRoundedIcon} />
-                    </li>
-                    <li>
-                      <SvgIcon component={StarBorderRoundedIcon} />
-                    </li>
-                    <li>
-                      <SvgIcon component={StarBorderRoundedIcon} />
-                    </li>
-                  </ul>
+                  <Rate />
                 </li>
               </ul>
             </div>
           </li>
         </ul>
       </div>
-    </div>
+    </>
   );
 }
 

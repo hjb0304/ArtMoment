@@ -9,6 +9,9 @@
     @apply font-pretendard;
     border-color: #0c0a09;
   }
+  img {
+    @apply h-full;
+  }
   .btn {
     @apply bg-secondary text-white rounded text-sm h-9 px-4;
     &.btn-icon {

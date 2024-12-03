@@ -11,13 +11,15 @@ function App() {
   return (
     <>
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/view" element={<View />}></Route>
-          <Route path="/create" element={<Create />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <div className="content px-24 py-6 flex flex-col gap-4">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />}></Route>
+            <Route path="/view" element={<View />}></Route>
+            <Route path="/create" element={<Create />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
       <Footer />
     </>
   );
