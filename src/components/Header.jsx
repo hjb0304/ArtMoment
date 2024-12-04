@@ -1,6 +1,7 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import SvgIcon from "@mui/material/SvgIcon";
+import Button from "./Button";
 
 function Header() {
   return (
@@ -8,9 +9,9 @@ function Header() {
       <h1 className="text-primary">ArtMoments</h1>
       <div className="search flex items-center h-11">
         <input type="text" className="input" />
-        <button className="btn btn-icon w-11">
+        <Button isIcon>
           <SvgIcon component={SearchIcon}></SvgIcon>
-        </button>
+        </Button>
       </div>
     </header>
   );
