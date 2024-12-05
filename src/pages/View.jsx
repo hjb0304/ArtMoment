@@ -2,8 +2,11 @@ import React from "react";
 import Rate from "../components/Rate";
 import img from "../assets/img/img.jpg";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 function View() {
+  const navigate = useNavigate();
+
   return (
     <>
       <h2 className="font-bold">기록 상세</h2>
@@ -33,11 +36,31 @@ function View() {
         </div>
       </div>
       <div className="btn-wrap flex justify-between">
-        <Button isOutline>목록</Button>
+        <Button
+          isOutline
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          목록
+        </Button>
         <div className="flex gap-2">
           {" "}
-          <Button>수정</Button>
-          <Button color="primary">삭제</Button>
+          <Button
+            onClick={() => {
+              navigate("/create");
+            }}
+          >
+            수정
+          </Button>
+          <Button
+            color="primary"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            삭제
+          </Button>
         </div>
       </div>
     </>

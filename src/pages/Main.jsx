@@ -1,13 +1,23 @@
 import React from "react";
 import img from "../assets/img/img.jpg";
 import Rate from "../components/Rate";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 function Main() {
+  const navigate = useNavigate();
+
   return (
     <>
       {" "}
-      <div className="btn-wrap flex justify-items-end">
-        <button className="btn">기록하기</button>
+      <div className="btn-wrap flex">
+        <Button
+          onClick={() => {
+            navigate("/create");
+          }}
+        >
+          기록하기
+        </Button>
       </div>
       <div className="art-list">
         <ul className="grid grid-cols-5 gap-4">
@@ -17,7 +27,12 @@ function Main() {
             </div>
             <div className="art-info p-4">
               <ul className="flex flex-wrap">
-                <li className="w-1/2 mb-2">
+                <li
+                  className="w-1/2 mb-2"
+                  onClick={() => {
+                    navigate("/view");
+                  }}
+                >
                   <h2 className="text-primary font-semibold text-xs mb-1">
                     분류
                   </h2>
