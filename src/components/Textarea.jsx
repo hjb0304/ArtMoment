@@ -1,7 +1,12 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-function Textarea() {
-  return <textarea className="border-1 rounded flex-1 h-full p-2"></textarea>;
-}
+const Textarea = forwardRef(({ children }, props, ref) => {
+  return (
+    <textarea
+      className="border-1 rounded flex-1 h-full p-2"
+      {...props}
+    ></textarea>
+  );
+});
 
 export default Textarea;

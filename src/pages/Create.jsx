@@ -7,14 +7,14 @@ import Textarea from "../components/Textarea";
 import Input from "../components/Input";
 import { useNavigate } from "react-router-dom";
 
-function Create() {
+function Create({ addReview }) {
   const navigate = useNavigate();
 
-  const sort = useRef();
-  const title = useRef();
-  const date = useRef();
-  const rate = useRef();
-  const desc = useRef();
+  const sort = useRef("");
+  const title = useRef("");
+  const date = useRef("");
+  const rate = useRef("");
+  const desc = useRef("");
 
   const enteredSort = sort.current.value;
   const enteredTitle = title.current.value;
@@ -22,7 +22,24 @@ function Create() {
   const enteredRate = rate.current.value;
   const enteredDesc = desc.current.value;
 
-  const handleSave = () => {};
+  const handleSave = () => {
+    if (
+      enteredSort === "" ||
+      enteredTitle === "" ||
+      enteredDate === "" ||
+      enteredRate === "" ||
+      enteredDesc === ""
+    ) {
+      return;
+    }
+    addReview({
+      sort: enteredSort,
+      title: enteredTitle,
+      date: enteredDate,
+      rate: enteredRate,
+      desc: enteredDesc,
+    });
+  };
 
   return (
     <>
@@ -45,11 +62,11 @@ function Create() {
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">날짜</h3>
-            <div ref={date}>2024.12.25</div>
+            <Input ref={date}>2024.12.25</Input>
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">평점</h3>
-            <Rate ref={rate} />
+            <Input ref={rate} />
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">내용</h3>

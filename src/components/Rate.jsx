@@ -4,9 +4,9 @@ import StarHalfRoundedIcon from "@mui/icons-material/StarHalfRounded";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import SvgIcon from "@mui/material/SvgIcon";
 
-function Rate() {
+function Rate({ ...props }) {
   return (
-    <ul className="flex">
+    <ul className="flex" {...props}>
       <li>
         <SvgIcon component={StarRoundedIcon} />
       </li>

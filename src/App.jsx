@@ -1,5 +1,5 @@
 import "./assets/scss/style.scss";
-import { useState } from "react";}
+import { useState } from "react";
 import Main from "./pages/Main";
 import Create from "./pages/Create";
 import View from "./pages/View";
@@ -8,9 +8,16 @@ import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-const [reviewState, setReviewState] = useState({
-  review: []
-})
+  const [reviewState, setReviewState] = useState({
+    review: [],
+  });
+
+  const handleAddReview = (reviewData) => {
+    setReviewState((prevState) => {
+      return { ...prevState, review: [...prevState.review, reviewData] };
+    });
+    console.log(reviewState);
+  };
 
   return (
     <>
@@ -20,7 +27,10 @@ const [reviewState, setReviewState] = useState({
           <Routes>
             <Route path="/" element={<Main />}></Route>
             <Route path="/view" element={<View />}></Route>
-            <Route path="/create" element={<Create />}></Route>
+            <Route
+              path="/create"
+              element={<Create addReview={handleAddReview} />}
+            ></Route>
           </Routes>
         </div>
         <Footer />
