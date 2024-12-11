@@ -10,19 +10,19 @@ import { useNavigate } from "react-router-dom";
 function Create({ addReview }) {
   const navigate = useNavigate();
 
-  const sort = useRef("");
-  const title = useRef("");
-  const date = useRef("");
-  const rate = useRef("");
-  const desc = useRef("");
-
-  const enteredSort = sort.current.value;
-  const enteredTitle = title.current.value;
-  const enteredDate = date.current.value;
-  const enteredRate = rate.current.value;
-  const enteredDesc = desc.current.value;
+  const sort = useRef();
+  const title = useRef();
+  const date = useRef();
+  const rate = useRef();
+  const desc = useRef();
 
   const handleSave = () => {
+    const enteredSort = sort.current.value;
+    const enteredTitle = title.current.value;
+    const enteredDate = date.current.value;
+    const enteredRate = rate.current.value;
+    const enteredDesc = desc.current.value;
+
     if (
       enteredSort === "" ||
       enteredTitle === "" ||
@@ -62,7 +62,7 @@ function Create({ addReview }) {
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">날짜</h3>
-            <Input ref={date}>2024.12.25</Input>
+            <Input ref={date}></Input>
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">평점</h3>

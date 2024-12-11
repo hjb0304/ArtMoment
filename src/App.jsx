@@ -25,7 +25,10 @@ function App() {
         <Header />
         <div className="content px-24 py-6 flex flex-col gap-4">
           <Routes>
-            <Route path="/" element={<Main />}></Route>
+            <Route
+              path="/"
+              element={<Main reviews={reviewState.review} />}
+            ></Route>
             <Route path="/view" element={<View />}></Route>
             <Route
               path="/create"
