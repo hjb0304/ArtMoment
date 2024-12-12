@@ -18,5 +18,5 @@ export default {
     },
   },
   plugins: [],
-  safelist: [{ pattern: /bg|text-color/ }],
+  safelist: [{ pattern: /(bg|text|border)-./ }],
 };

@@ -6,6 +6,7 @@ import View from "./pages/View";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   const [reviewState, setReviewState] = useState({
@@ -23,7 +24,10 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <div className="content px-24 py-6 flex flex-col gap-4">
+        <div
+          className="content px-24 py-6 flex flex-col gap-4"
+          style={{ minHeight: "calc(100vh - 160px)" }}
+        >
           <Routes>
             <Route
               path="/"

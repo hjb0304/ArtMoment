@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Rate from "../components/Rate";
 import img from "../assets/img/img.jpg";
 import Button from "../components/Button";
@@ -6,9 +6,11 @@ import Select from "../components/Select";
 import Textarea from "../components/Textarea";
 import Input from "../components/Input";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
 
 function Create({ addReview }) {
   const navigate = useNavigate();
+  const [startDate, setStartDate] = useState(new Date());
 
   const sort = useRef();
   const title = useRef();
@@ -19,14 +21,14 @@ function Create({ addReview }) {
   const handleSave = () => {
     const enteredSort = sort.current.value;
     const enteredTitle = title.current.value;
-    const enteredDate = date.current.value;
+    // const enteredDate = date.current.value;
     const enteredRate = rate.current.value;
     const enteredDesc = desc.current.value;
 
     if (
       enteredSort === "" ||
       enteredTitle === "" ||
-      enteredDate === "" ||
+      startDate === "" ||
       enteredRate === "" ||
       enteredDesc === ""
     ) {
@@ -35,7 +37,7 @@ function Create({ addReview }) {
     addReview({
       sort: enteredSort,
       title: enteredTitle,
-      date: enteredDate,
+      date: startDate.toLocaleDateString(),
       rate: enteredRate,
       desc: enteredDesc,
     });
@@ -54,6 +56,7 @@ function Create({ addReview }) {
             <h3 className="font-semibold">분류</h3>
             <Select ref={sort}>
               <option value="ex">전시</option>
+              <option value="cc">공연</option>
             </Select>
           </li>
           <li className="flex items-center gap-4">
@@ -62,7 +65,13 @@ function Create({ addReview }) {
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">날짜</h3>
-            <Input ref={date}></Input>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="yyyy/MM/dd"
+              className="input"
+              ref={date}
+            />
           </li>
           <li className="flex items-center gap-4">
             <h3 className="font-semibold">평점</h3>
