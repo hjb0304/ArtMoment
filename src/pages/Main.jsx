@@ -4,7 +4,7 @@ import Rate from "../components/Rate";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
-function Main({ reviews }) {
+function Main({ reviews, onSelectReview }) {
   const navigate = useNavigate();
 
   return (
@@ -28,7 +28,13 @@ function Main({ reviews }) {
           <ul className="grid grid-cols-5 gap-4">
             {reviews.map((review, index) => {
               return (
-                <li className="rounded-lg border-2" key={index}>
+                <li
+                  className="rounded-lg border-2"
+                  key={review.id}
+                  onClick={() => {
+                    onSelectReview(review.id);
+                  }}
+                >
                   <div className="art-img">
                     <img src={img} alt="" />
                   </div>

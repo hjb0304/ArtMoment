@@ -2,14 +2,15 @@ import React from "react";
 import Rate from "../components/Rate";
 import img from "../assets/img/img.jpg";
 import Button from "../components/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function View() {
   const navigate = useNavigate();
+  const params = useParams();
 
   return (
     <>
-      <h2 className="font-bold">기록 상세</h2>
+      <h2 className="font-bold">{params.id}기록 상세</h2>
       <div className="border-2 p-4 flex gap-4 rounded h-[341px]">
         <div className="rounded overflow-hidden">
           <img src={img} alt="" />

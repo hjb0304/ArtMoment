@@ -10,15 +10,30 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   const [reviewState, setReviewState] = useState({
+    selectedReviewId: undefined,
     review: [],
   });
 
   const handleAddReview = (reviewData) => {
+    const newProject = { ...reviewData, id: Math.random() * 100 };
+
     setReviewState((prevState) => {
-      return { ...prevState, review: [...prevState.review, reviewData] };
+      return { ...prevState, review: [...prevState.review, newProject] };
     });
     console.log(reviewState);
   };
+
+  const handleSelectReview = (id) => {
+    setReviewState((prevState) => {
+      return { ...prevState, selectedReviewId: id };
+    });
+  };
+
+  const selectedReview = reviewState.review(
+    find((review) => {
+      review.id === reviewState.selectedReviewId;
+    })
+  );
 
   return (
     <>
@@ -31,9 +46,17 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Main reviews={reviewState.review} />}
+              element={
+                <Main
+                  reviews={reviewState.review}
+                  onSelectReview={handleSelectReview}
+                />
+              }
             ></Route>
-            <Route path="/view" element={<View />}></Route>
+            <Route
+              path="/view/:id"
+              element={<View review={selectedReview} />}
+            ></Route>
             <Route
               path="/create"
               element={<Create addReview={handleAddReview} />}
