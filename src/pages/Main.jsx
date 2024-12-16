@@ -33,6 +33,7 @@ function Main({ reviews, onSelectReview }) {
                   key={review.id}
                   onClick={() => {
                     onSelectReview(review.id);
+                    // navigate(`/view/${review.id}`);
                   }}
                 >
                   <div className="art-img">

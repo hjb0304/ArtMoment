@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useParams } from "react";
 import Rate from "../components/Rate";
 import img from "../assets/img/img.jpg";
 import Button from "../components/Button";
@@ -8,8 +8,10 @@ import Input from "../components/Input";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
-function Create({ addReview }) {
+function Create({ addReview, addId }) {
   const navigate = useNavigate();
+  const params = useParams();
+
   const [startDate, setStartDate] = useState(new Date());
 
   const sort = useRef();
@@ -96,7 +98,7 @@ function Create({ addReview }) {
           {" "}
           <Button
             onClick={() => {
-              navigate("/view");
+              // navigate(`/`);
               handleSave();
             }}
           >

@@ -4,7 +4,7 @@ import img from "../assets/img/img.jpg";
 import Button from "../components/Button";
 import { useNavigate, useParams } from "react-router-dom";
 
-function View() {
+function View({ review }) {
   const navigate = useNavigate();
   const params = useParams();
 
@@ -20,18 +20,18 @@ function View() {
             {" "}
             <li>
               <div className="flex items-center gap-2">
-                <span className="text-xs">전시</span>
-                <h3 className="font-semibold">전시 제목</h3>
+                <span className="text-xs">{review.sort}</span>
+                <h3 className="font-semibold">{review.title}</h3>
               </div>
             </li>
             <li>
-              <div>2024.12.25</div>
+              <div>{review.date}</div>
             </li>
             <li>
               <Rate />
             </li>
             <li>
-              <p>내용</p>
+              <p>{review.desc}</p>
             </li>
           </ul>
         </div>

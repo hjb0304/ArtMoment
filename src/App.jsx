@@ -15,7 +15,7 @@ function App() {
   });
 
   const handleAddReview = (reviewData) => {
-    const newProject = { ...reviewData, id: Math.random() * 100 };
+    const newProject = { ...reviewData, id: parseInt(Math.random() * 100) };
 
     setReviewState((prevState) => {
       return { ...prevState, review: [...prevState.review, newProject] };
@@ -29,12 +29,9 @@ function App() {
     });
   };
 
-  const selectedReview = reviewState.review(
-    find((review) => {
-      review.id === reviewState.selectedReviewId;
-    })
-  );
-
+  const selectedReview = reviewState.review.find((review) => {
+    review.id === reviewState.selectedReviewId;
+  });
   return (
     <>
       <BrowserRouter>
@@ -59,7 +56,12 @@ function App() {
             ></Route>
             <Route
               path="/create"
-              element={<Create addReview={handleAddReview} />}
+              element={
+                <Create
+                  addReview={handleAddReview}
+                  // addId={handleAddReview.newProject.id}
+                />
+              }
             ></Route>
           </Routes>
         </div>
