@@ -9,7 +9,14 @@ import { BrowserRouter, Routes, Route, data } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 
 const mockData = [
-  { id: 1, sort: "ex", title: "리지", date: new Date(), rate: 4, desc: "꿀잼" },
+  {
+    id: 1,
+    sort: "ex",
+    title: "리지",
+    date: new Date().toLocaleDateString(),
+    rate: 4,
+    desc: "꿀잼",
+  },
 ];
 
 function reducer(state, action) {
@@ -30,8 +37,8 @@ function reducer(state, action) {
   }
 }
 
-const ReviewStateContent = createContext();
-const ReviewDispatchContent = createContext();
+export const ReviewStateContext = createContext();
+export const ReviewDispatchContext = createContext();
 
 function App() {
   const [data, dispatch] = useReducer(reducer, mockData);
@@ -77,8 +84,8 @@ function App() {
           className="content px-24 py-6 flex flex-col gap-4"
           style={{ minHeight: "calc(100vh - 160px)" }}
         >
-          <ReviewStateContent.Provider value={data}>
-            <ReviewDispatchContent.Provider
+          <ReviewStateContext.Provider value={data}>
+            <ReviewDispatchContext.Provider
               value={{
                 handleAddReview,
                 handleUpdateReview,
@@ -90,8 +97,8 @@ function App() {
                 <Route path="/view/:id" element={<View />}></Route>
                 <Route path="/create" element={<Create />}></Route>
               </Routes>
-            </ReviewDispatchContent.Provider>
-          </ReviewStateContent.Provider>
+            </ReviewDispatchContext.Provider>
+          </ReviewStateContext.Provider>
         </div>
         <Footer />
       </BrowserRouter>

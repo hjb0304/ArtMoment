@@ -99,7 +99,7 @@ function Create({ addReview, addId }) {
           <Button
             onClick={() => {
               // navigate(`/`);
-              handleSave();
+              // handleSave();
             }}
           >
             등록
