@@ -1,37 +1,74 @@
 import "./assets/scss/style.scss";
-import { useState } from "react";
+import { useState, useReducer, useRef, createContext } from "react";
 import Main from "./pages/Main";
 import Create from "./pages/Create";
 import View from "./pages/View";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, data } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 
+const mockData = [
+  { id: 1, sort: "ex", title: "리지", date: new Date(), rate: 4, desc: "꿀잼" },
+];
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "CREATE":
+      return [action.data, ...state];
+
+    case "UPDATE":
+      return state.map((i) =>
+        String(i.id) === String(action.data.id) ? action.data : i
+      );
+
+    case "DELETE":
+      return state.filter((i) => String(i.id) !== String(action.id));
+
+    default:
+      return state;
+  }
+}
+
+const ReviewStateContent = createContext();
+const ReviewDispatchContent = createContext();
+
 function App() {
-  const [reviewState, setReviewState] = useState({
-    selectedReviewId: undefined,
-    review: [],
-  });
+  const [data, dispatch] = useReducer(reducer, mockData);
+  const idRef = useRef(3);
 
-  const handleAddReview = (reviewData) => {
-    const newProject = { ...reviewData, id: parseInt(Math.random() * 100) };
-
-    setReviewState((prevState) => {
-      return { ...prevState, review: [...prevState.review, newProject] };
-    });
-    console.log(reviewState);
-  };
-
-  const handleSelectReview = (id) => {
-    setReviewState((prevState) => {
-      return { ...prevState, selectedReviewId: id };
+  const handleAddReview = (sort, title, date, rate, desc) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: idRef.current++,
+        sort,
+        title,
+        date,
+        rate,
+        desc,
+      },
     });
   };
 
-  const selectedReview = reviewState.review.find((review) => {
-    review.id === reviewState.selectedReviewId;
-  });
+  const handleUpdateReview = (id, sort, title, date, rate, desc) => {
+    dispatch({
+      type: "UPDATE",
+      data: {
+        id,
+        sort,
+        title,
+        date,
+        rate,
+        desc,
+      },
+    });
+  };
+
+  const handleDeleteReview = (id) => {
+    dispatch({ type: "DELETE", id });
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -40,30 +77,21 @@ function App() {
           className="content px-24 py-6 flex flex-col gap-4"
           style={{ minHeight: "calc(100vh - 160px)" }}
         >
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  reviews={reviewState.review}
-                  onSelectReview={handleSelectReview}
-                />
-              }
-            ></Route>
-            <Route
-              path="/view/:id"
-              element={<View review={selectedReview} />}
-            ></Route>
-            <Route
-              path="/create"
-              element={
-                <Create
-                  addReview={handleAddReview}
-                  // addId={handleAddReview.newProject.id}
-                />
-              }
-            ></Route>
-          </Routes>
+          <ReviewStateContent.Provider value={data}>
+            <ReviewDispatchContent.Provider
+              value={{
+                handleAddReview,
+                handleUpdateReview,
+                handleDeleteReview,
+              }}
+            >
+              <Routes>
+                <Route path="/" element={<Main />}></Route>
+                <Route path="/view/:id" element={<View />}></Route>
+                <Route path="/create" element={<Create />}></Route>
+              </Routes>
+            </ReviewDispatchContent.Provider>
+          </ReviewStateContent.Provider>
         </div>
         <Footer />
       </BrowserRouter>
