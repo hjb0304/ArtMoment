@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Rate from "../components/Rate";
 import img from "../assets/img/img.jpg";
 import Button from "../components/Button";
 import { useNavigate, useParams } from "react-router-dom";
+import { ReviewStateContext } from "../App";
 
 function View({}) {
   const navigate = useNavigate();
   const params = useParams();
+  const data = useContext(ReviewStateContext);
+  // const reviewData = data.find()
 
   return (
     <>

@@ -2,6 +2,7 @@ import "./assets/scss/style.scss";
 import { useState, useReducer, useRef, createContext } from "react";
 import Main from "./pages/Main";
 import Create from "./pages/Create";
+import Edit from "./pages/Edit";
 import View from "./pages/View";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -96,6 +97,7 @@ function App() {
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/view/:id" element={<View />}></Route>
                 <Route path="/create" element={<Create />}></Route>
+                <Route path="/edit/:id" element={<Edit />}></Route>
               </Routes>
             </ReviewDispatchContext.Provider>
           </ReviewStateContext.Provider>
